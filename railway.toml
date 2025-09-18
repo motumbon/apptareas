@@ -1,0 +1,18 @@
+# Railway monorepo configuration for backend service
+# This file tells Railway to build and run the app from apps/server/
+
+[build]
+# Root of the service inside the monorepo
+root = "apps/server"
+# Use Nixpacks (default) to detect Node and Prisma
+builder = "NIXPACKS"
+# Optional: explicit build command (Nixpacks usually detects this)
+buildCommand = "npm run build"
+
+[deploy]
+# Run Prisma migrations before starting (prestart in package.json already does this)
+startCommand = "npm start"
+# Basic health check (optional)
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "always"
