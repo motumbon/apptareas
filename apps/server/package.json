@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "prisma generate",
-    "prestart": "prisma migrate resolve --rolled-back 20250917151910_init || true; prisma migrate resolve --rolled-back 20250917165721_add_checkboxes || true; prisma migrate deploy",
+    "build:production": "cp prisma/schema.production.prisma prisma/schema.prisma && prisma generate && prisma migrate deploy",
+    "prestart": "npm run build:production",
     "start": "node src/index.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate deploy",

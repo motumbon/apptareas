@@ -12,6 +12,7 @@ CREATE TABLE "Task" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
     "comment" TEXT NOT NULL DEFAULT '',
+    "checkboxes" TEXT NOT NULL DEFAULT '[]',
     "completed" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL,
