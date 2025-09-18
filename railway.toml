@@ -6,8 +6,8 @@
 root = "apps/server"
 # Use Nixpacks (default) to detect Node and Prisma
 builder = "NIXPACKS"
-# Optional: explicit build command (Nixpacks usually detects this)
-buildCommand = "npm run build"
+# Force npm usage and install dependencies
+buildCommand = "npm install && npm run build"
 
 [deploy]
 # Run Prisma migrations before starting (prestart in package.json already does this)

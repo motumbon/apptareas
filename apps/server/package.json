@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "echo 'No build needed for JS'",
+    "build": "prisma generate",
     "prestart": "prisma migrate deploy",
     "start": "node src/index.js",
     "prisma:generate": "prisma generate",
