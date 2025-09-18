@@ -1,3 +1,7 @@
+-- Drop existing tables if they exist (for clean reset)
+DROP TABLE IF EXISTS "Task" CASCADE;
+DROP TABLE IF EXISTS "User" CASCADE;
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,

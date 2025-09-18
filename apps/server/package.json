@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "build": "prisma generate",
-    "build:production": "cp prisma/schema.production.prisma prisma/schema.prisma && rm -rf prisma/migrations && cp -r prisma/migrations-postgresql prisma/migrations && prisma generate && prisma migrate deploy",
+    "build:production": "cp prisma/schema.production.prisma prisma/schema.prisma && rm -rf prisma/migrations && cp -r prisma/migrations-postgresql prisma/migrations && prisma generate && prisma migrate reset --force && prisma migrate deploy",
     "build:production:windows": "powershell -ExecutionPolicy Bypass -File build-production.ps1",
     "prestart": "npm run build:production",
     "start": "node src/index.js",
