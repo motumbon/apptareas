@@ -3,14 +3,10 @@ import { AuthResponse, LoginData, RegisterData, Task, CreateTaskData, UpdateTask
 
 // Base URL de la API: usa VITE_API_URL si está presente, con fallback en dev
 const DEFAULT_API = 'http://localhost:3000/api';
-const API_BASE_URL =
-  (typeof import.meta !== 'undefined' && (import.meta as any)?.env?.VITE_API_URL) ||
-  (typeof process !== 'undefined' && (process as any)?.env?.VITE_API_URL) ||
-  DEFAULT_API;
+const API_BASE_URL = import.meta.env.VITE_API_URL || DEFAULT_API;
 
-if (!(import.meta as any)?.env?.VITE_API_URL) {
+if (!import.meta.env.VITE_API_URL) {
   // Aviso en desarrollo si no está configurada la variable
-  // eslint-disable-next-line no-console
   console.warn('[API] VITE_API_URL no está definido. Usando fallback:', DEFAULT_API);
 }
 
