@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "main": "node_modules/expo/AppEntry.js",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
