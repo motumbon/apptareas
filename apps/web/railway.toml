@@ -1,0 +1,16 @@
+# Railway configuration for frontend web app
+[build]
+# Root of the web service inside the monorepo
+root = "apps/web"
+# Use Nixpacks to detect Vite/React
+builder = "NIXPACKS"
+# Build command for production
+buildCommand = "npm install && npm run build:production"
+
+[deploy]
+# Start command for serving the built app
+startCommand = "npm start"
+# Health check
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "always"
