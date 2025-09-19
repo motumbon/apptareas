@@ -2,8 +2,8 @@ import axios from 'axios';
 import * as SecureStore from 'expo-secure-store';
 import { AuthResponse, LoginData, RegisterData, Task, CreateTaskData, UpdateTaskData } from '../types';
 
-// Cambia esta URL por la de tu API en Railway cuando la despliegues
-const API_BASE_URL = 'http://localhost:3000/api';
+// URL del API en producción (Railway)
+const API_BASE_URL = 'https://server-production-c2f2.up.railway.app/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
