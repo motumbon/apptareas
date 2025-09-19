@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --web --port ${PORT:-19006}",
+    "build": "expo export --platform web",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "dev": "expo start"
   },
   "dependencies": {
     "expo": "~51.0.28",
@@ -19,7 +21,9 @@
     "@react-navigation/stack": "^6.4.1",
     "axios": "^1.7.2",
     "@expo/vector-icons": "^14.0.2",
-    "expo-secure-store": "~13.0.2"
+    "expo-secure-store": "~13.0.2",
+    "react-native-web": "~0.19.10",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

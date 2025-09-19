@@ -1,0 +1,16 @@
+# Railway configuration for mobile app (Expo Web)
+[build]
+# Root of the mobile service inside the monorepo
+root = "apps/mobile"
+# Use Nixpacks to detect Node.js/Expo
+builder = "NIXPACKS"
+# Build command for Expo web export
+buildCommand = "npm install && npm run build"
+
+[deploy]
+# Start command for serving the Expo web app
+startCommand = "npm start"
+# Health check
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "always"
