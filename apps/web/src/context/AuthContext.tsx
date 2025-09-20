@@ -7,6 +7,7 @@ interface AuthContextType {
   login: (token: string, user: User) => void;
   logout: () => void;
   isAuthenticated: boolean;
+  isLoading: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -26,6 +27,7 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Cargar datos del localStorage al iniciar
@@ -33,9 +35,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const savedUser = localStorage.getItem('user');
     
     if (savedToken && savedUser) {
-      setToken(savedToken);
-      setUser(JSON.parse(savedUser));
+      try {
+        setToken(savedToken);
+        setUser(JSON.parse(savedUser));
+      } catch (error) {
+        console.error('Error parsing saved user data:', error);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      }
     }
+    
+    // Marcar como completada la carga inicial
+    setIsLoading(false);
   }, []);
 
   const login = (newToken: string, newUser: User) => {
@@ -58,6 +69,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     login,
     logout,
     isAuthenticated: !!token && !!user,
+    isLoading,
   };
 
   return (
